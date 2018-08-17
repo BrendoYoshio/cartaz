@@ -1,0 +1,22 @@
+// Imports ===============================================================================
+@import url('../fonts/font-face.css');
+
+//Paleta de Cores
+$color: #000;
+
+//Fonts
+$font-family-1: sans-serif;
+$font-family-2: cursive;
+$font-size: 16px;
+
+
+//  Aplica os prefixos proprietarios
+//  @param  {String} $prop  [Propriedade (width, transition. border-radius, etc)]
+//  @param  {[type]} $value [valor da propriedade]
+@mixin prefix($prop, $value) {
+  -webkit-#{$prop}: $value;
+     -moz-#{$prop}: $value;
+      -o-#{$prop}: $value;
+      -ms-#{$prop}: $value;
+          #{$prop}: $value;
+}

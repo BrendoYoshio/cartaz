@@ -1,0 +1,53 @@
+// compileCompressed: ../css/$1.min.css
+
+@import "partials/_setup";
+@import "partials/_reset";
+
+/* Layout ================================================================================ */
+
+body {
+
+}
+
+main {
+  max-width: 1140px; margin: 0 auto;
+  > div {
+    height: 100vh;
+    #myCanvas {
+      height: 100vh; max-height: 842px;
+      // border: 1px solid #d3d3d3;
+      background-image: url(../img/bg.jpg); background-size: cover; background-position: center;
+    }
+    #download {
+      display: inline-block; float: right; padding: 10px;
+      font: 16px "Arial"; font-weight: bold; text-align: center; text-decoration: none; text-transform: uppercase;
+      color: #fff; background-color: #890000;
+    }
+    nav {
+      margin-bottom: 6px;
+      ul {
+        max-width: 663px; padding-right: 36px;
+        li {
+          &.active a {
+            @extend a:hover;
+          }
+          a {
+            display: block;
+            font: 12px "Arial"; text-transform: uppercase; letter-spacing: 1px;
+            color: #000;
+            &:hover, &:focus {
+              color: rgba(#000,.8);
+            }
+          }
+        }
+      }
+    }
+    form {
+      width: 100%;
+      input {
+        width: 100%; padding: 5px; margin: 5px 0;
+        font: 20px "Arial"; border: 1px solid #ccc;
+      }
+    }
+  }
+}

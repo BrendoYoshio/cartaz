@@ -1,0 +1,60 @@
+// REM = font-size / 16
+html {
+  @include media(xs) { font-size: 66%; };
+  @include media(sm) { font-size: 77%; };
+  @include media(md) { font-size: 83%; };
+  @include media(lg) { font-size: 100%; };
+}
+
+$translateX: translateX(-50%);
+$translateY: translateY(-50%);
+%prop-center {
+  position: relative; margin: 0 auto;
+}
+
+%center {
+  @extend %prop-center; top: 50%; left: 50%;
+  @include prefix(transform, $translateX $translateY);
+}
+%center-x {
+  @extend %prop-center; left: 50%;
+  @include prefix(transform, $translateX);
+}
+%center-y {
+  @extend %prop-center; top: 50%;
+  @include prefix(transform, $translateY);
+}
+
+%transition {
+  @include prefix(transition, all 0.3s ease-in-out);
+}
+
+$media-display: 'xs' 'sm' 'md' 'lg';
+
+%visible {
+  display: none !important;
+}
+
+@each $item in $media-display {
+  .hidden-#{$item} {
+    @include media($item) { display: none !important; };
+  }
+
+  .visible-#{$item} {
+    @extend %visible;
+    @include media($item) { display: block !important; };
+  }
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%; max-width: 1170px; padding: 0 2vw; margin: 0 auto;
+  @include media(xs) { max-width: 568px; };
+  @include media(sm) { max-width: 792px; };
+  @include media(md) { max-width: 1000px; };
+  @include media(lg) { padding: 0; };
+}

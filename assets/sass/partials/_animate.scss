@@ -1,0 +1,33 @@
+//  @param  {String} $animate [Passar as propriedades do "animation" resumido Exemplo: animation('nome-da-animacao 1.5s infinite')]
+// "..." Aceita mais de uma animação no mesmo objeto [Exemplo animation('nome-da-animacao-1 1.5s infinite', 'nome-da-animacao-2 1.5s infinite')]
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    // Utilizando o mixin "prefix"
+    @include prefix(animation, $animations);
+}
+//  Aplica os keyframes da animação
+//  @param  {String} $animationName [Nome da animação]
+//  @content [valor da animação (from {} to {}, 0% {} 100% {}, etc)]
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

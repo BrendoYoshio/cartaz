@@ -1,0 +1,25 @@
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+
+@mixin media($medias...) {
+  $max: length($medias);
+  $media: '';
+
+  @for $i from 1 through $max {
+    $media: nth($medias, $i);
+
+    @if $media == xs {
+      @media only screen and (max-width: $break-small) { @content; }
+    }
+    @else if $media == sm {
+      @media only screen and (min-width: $break-small + 1) and (max-width: $break-medium - 1) { @content; }
+    }
+    @else if $media == md {
+      @media only screen and (min-width: $break-medium) and (max-width: $break-large - 1) { @content; }
+    }
+    @else if $media == lg {
+      @media only screen and (min-width: $break-large) { @content; }
+    }
+  }
+}
